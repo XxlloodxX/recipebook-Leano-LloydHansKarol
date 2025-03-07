@@ -6,8 +6,11 @@
 	<h1>Recipe Book</h1>
 </header>
     <h2>Recipe List</h2>
-    <li><a href = "/recipe/1">Recipe 1</a></li>
-    <li><a href = "/recipe/2">Recipe 2</a></li>
+    <ul>
+        {% for item in recipe %}
+        <li><a href="/recipe/{{item.id}}">{{item.name}}</a></li>
+        {% endfor %}
+    </ul>
 
 
 </body>

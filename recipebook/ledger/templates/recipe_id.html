@@ -8,8 +8,8 @@
     <h2>{{recipe.name}}</h2>
     <h3>Ingredients:</h3>
     <ul>
-        {% for item in recipe.ingredients %}
-        <li>{{item.name}} - {{item.quantity}}</li>
+        {% for item in ingredients %}
+        <li>{{item.ingredients.name}} - {{item.quantity}}</li>
         {% endfor %}
     </ul>
 
