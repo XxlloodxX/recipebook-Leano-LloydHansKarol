@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recipe Book</title>
+</head>
+<body>
+    <header>
+        <h1>Recipe Book</h1>
+        <nav>
+            {% if user.is_authenticated %}
+                <form method="post" action="{% url 'logout' %}">
+					{% csrf_token %}
+					{{ form.as_p }}
+					<button class="nav-link" type="submit">Logout</button>
+				</form>
+            {% else %}
+                <a href="{% url 'login' %}"></a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <h2>{% block page_heading %}{% endblock %}</h2>
+
+    <main>
+        {% block body %}{% endblock %}
+    </main>
+
+</body>
+</html>

@@ -1,17 +1,13 @@
-<!DOCTYPE html>
-<html>
-    <head><title>Recipe Book</title></head>
-<body>
-<header>
-	<h1>Recipe Book</h1>
-</header>
-    <h2>Recipe List</h2>
+{% extends "baseTemplate.html" %}
+
+{% block page_heading %}
+    Recipe List
+{% endblock %}
+
+{% block body %}
     <ul>
         {% for item in recipe %}
-        <li><a href="/recipe/{{item.id}}">{{item.name}}</a></li>
+        <li><a href="/recipe/{{item.id}}">{{ item.name }}</a></li>
         {% endfor %}
     </ul>
-
-
-</body>
-</html>
+{% endblock %}
