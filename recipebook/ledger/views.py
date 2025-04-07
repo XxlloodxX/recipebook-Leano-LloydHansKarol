@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Ingredient, Recipe, RecipeIngredient, RecipeImage
 from .forms import RecipeForm, RecipeIngredientForm, IngredientForm, RecipeImageForm
 
-
+# Create your views here.
 @login_required
 def recipe_list(request):
     recipes = Recipe.objects.all()
@@ -15,8 +15,13 @@ def recipe_list(request):
 def recipe_with_param(request, param):
     recipe = Recipe.objects.get(id = param)
     ingredients = RecipeIngredient.objects.filter(recipe=recipe)
-        
-    return render(request, 'recipe_id.html', {'recipe':recipe, 'ingredients':ingredients})
+    images = RecipeImage.objects.filter(recipe=recipe)
+    
+    return render(request, 'recipe_id.html', {
+        'recipe':recipe,
+        'ingredients':ingredients,
+        'images':images
+    })
 
 @login_required
 def recipe_add(request):
