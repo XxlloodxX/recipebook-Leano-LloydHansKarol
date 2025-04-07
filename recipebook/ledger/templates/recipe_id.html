@@ -7,12 +7,20 @@
 {% block body %}
 	<h3>by: {{recipe.author.name}}</h3>
 	
+	<h3>Images:</h3>
+    {% for image in images %}
+        <img src="{{image.image.url}}">
+    {% endfor %}
+	<br>
+	
 	<h3>Ingredients:</h3>
 	<ul>
         {% for item in ingredients %}
         <li>{{item.ingredients.name}} - {{item.quantity}}</li>
         {% endfor %}
     </ul>
+	
+	<a href = "/recipe/{{recipe.id}}/add_image">Add Image</a>
 	
 	<a href = "/recipes/list">Back to Main</a>
 {% endblock %}
