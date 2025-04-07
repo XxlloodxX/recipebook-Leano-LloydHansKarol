@@ -44,3 +44,17 @@ def recipe_add(request):
         'ingredient_form': ingredient_form,
         'recipe_ingredient_form': recipe_ingredient_form,
     })
+
+def recipe_image(request, pk):
+    recipe = Recipe.objects.get(id = pk)
+    if request.method == 'POST':
+        image_form = RecipeImageForm(request.POST, request.FILES)
+        if image_form.is_valid():
+            image = image_form.save(commit=False)
+            image.recipe = recipe
+            image.save()
+            return redirect('ledger:recipe_with_param', param=recipe.pk)
+    else:
+        image_form = RecipeImageForm()
+    
+    return render(request, 'recipe_add_image.html', {'recipe': recipe, 'image_form': image_form})
