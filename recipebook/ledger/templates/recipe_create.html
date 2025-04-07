@@ -1,0 +1,30 @@
+{% extends "baseTemplate.html" %}
+
+{% block page_heading %}
+    Create your Recipe
+{% endblock %}
+
+{% block body %}
+    <h3>Create Recipe</h3>
+    <form method="POST">
+        {% csrf_token %}
+        {{ recipe_form.as_p }}
+        <button type="submit" name="create_recipe">Create Recipe</button>
+    </form>
+
+    <h3>Add Ingredient</h3>
+    <form method="POST">
+        {% csrf_token %}
+        {{ ingredient_form.as_p }}
+        <button type="submit" name="create_ingredient">Create Ingredient</button>
+    </form>
+
+    <h3>Add RecipeIngredient</h3>
+    <form method="POST">
+        {% csrf_token %}
+        {{ recipe_ingredient_form.as_p }}
+        <button type="submit" name="create_recipe_ingredient">Add RecipeIngredient</button>
+    </form>
+
+    <b><a href="/recipes/list">Back to Main</a></b>
+{% endblock %}
