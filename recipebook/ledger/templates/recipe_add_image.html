@@ -1,0 +1,16 @@
+{% extends "baseTemplate.html" %}
+
+{% block page_heading %}
+    Upload Image for {{ recipe.name }}
+{% endblock %}
+
+{% block body %}
+    <h3>Upload Image for : {{ recipe.name }}"</h3>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ image_form.as_p }}
+        <button type="submit" name="add_image">Upload Image</button>
+    </form>
+
+    <a href="{% url 'ledger:recipe_with_param' param=recipe.pk %}">Back to Recipe</a>
+{% endblock %}
